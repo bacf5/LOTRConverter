@@ -22,6 +22,7 @@ struct ContentView: View {
                     // Left conversion section
                     VStack {
                          // Currency
+                        Text("hola")
                         HStack {
                             // currency image
                             
