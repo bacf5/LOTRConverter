@@ -57,7 +57,7 @@ struct ContentView: View {
                         // Text field
                         TextField("Amount", text: $rightAmount).textFieldStyle(.roundedBorder).multilineTextAlignment(.trailing)
                     }
-                }
+                }.padding().background(.black.opacity(0.5)).clipShape(.capsule)
                
                 Spacer()
                 HStack{
