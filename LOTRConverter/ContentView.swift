@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var showExchangeInfo = false
+    @State var leftAmount = ""
+    @State var rightAmount = ""
+    
     var body: some View {
         ZStack {
             // Background image
@@ -34,9 +38,9 @@ struct ContentView: View {
                             
                             // currency text
                             Text("Silver Piece").font(.headline).foregroundStyle(.white)
-                        }
+                        }.padding(.bottom, -5)
                         // Text field
-                        Text("Text field")
+                        TextField("Amount", text: $leftAmount).textFieldStyle(.roundedBorder)
                     }
                     // Equal sign
                     Image(systemName: "equal").font(.largeTitle).foregroundStyle(.white).symbolEffect(.pulse)
@@ -49,16 +53,24 @@ struct ContentView: View {
                             Text("Gold Piece").font(.headline).foregroundStyle(.white)
                             // currency image
                             Image(.goldpiece).resizable().scaledToFit().frame(height: 33)
-                        }
+                        }.padding(.bottom, -5)
                         // Text field
-                    Text("Text field")
+                        TextField("Amount", text: $rightAmount).textFieldStyle(.roundedBorder).multilineTextAlignment(.trailing)
                     }
                 }
-                
+               
                 Spacer()
-                
-                // info Button
-                Image(systemName: "info.circle.fill").font(.largeTitle).foregroundStyle(.white)
+                HStack{
+                    Spacer()
+                    // info Button
+                    Button {
+                        showExchangeInfo.toggle()
+//                        print("showExchangeInfo value: \(showExchangeInfo)")
+                        
+                    } label: {
+                        Image(systemName: "info.circle.fill").font(.largeTitle).foregroundStyle(.white)
+                    }
+                }.padding(.trailing)
             }
 //            .border(.blue)
         }
