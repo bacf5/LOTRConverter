@@ -1,5 +1,5 @@
 //
-//  ExchangeRate.swift
+//  SelectCurrency.swift
 //  LOTRConverter
 //
 //  Created by Bruno Agustín Caruso Fassa on 21/06/2025.
@@ -7,23 +7,50 @@
 
 import SwiftUI
 
-struct ExchangeRate: View {
-    let leftImage: ImageResource
-    let text: String
-    let rightImage: ImageResource
+
+struct SelectCurrency: View {
+    @Environment(\.dismiss) var dismiss
     
     var body: some View {
-        HStack {
-            // Left currency image
-            Image(leftImage).resizable().scaledToFit().frame(height: 33)
-            // Exchange rate text
-            Text(text)
-            // Right currency image
-            Image(rightImage).resizable().scaledToFit().frame(height: 33)
+        ZStack {
+            // Parchment bg image
+            Image(.parchment)
+                .resizable()
+                .ignoresSafeArea()
+                .background(.brown)
+            
+            VStack {
+                // Text
+                Text("Select the currency you are starting with:")
+                    .fontWeight(.bold)
+                
+                // Currency icons
+                CurrencyIcon(currencyImage: .copperpenny, currencyName: "Copper Penny")
+                
+                Text("Select the currency you would like to convert to:")
+                    .fontWeight(.bold)
+                
+                // Text
+                
+                
+                // Currency icons
+                
+                // Done button
+                Button("Done") {
+                    dismiss() }
+                .buttonStyle(.borderedProminent)
+                .tint(.brown.mix(with: .black, by: 0.2))
+                .font(.largeTitle)
+                .padding()
+                .foregroundStyle(.white)
+                
+            }
+            .padding()
+            .multilineTextAlignment(.center)
         }
     }
 }
 
 #Preview {
-    ExchangeRate(leftImage: .silverpiece, text: "1 Silver Piece = 4 Silver Pennies", rightImage: .silverpenny)
+   SelectCurrency()
 }
