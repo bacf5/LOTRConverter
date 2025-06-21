@@ -30,8 +30,8 @@ struct ContentView: View {
                 HStack {
                     // Left conversion section
                     VStack {
-                         // Currency
-                    
+                        // Currency
+                        
                         HStack {
                             // currency image
                             Image(.silverpiece).resizable().scaledToFit().frame(height: 33)
@@ -57,20 +57,24 @@ struct ContentView: View {
                         // Text field
                         TextField("Amount", text: $rightAmount).textFieldStyle(.roundedBorder).multilineTextAlignment(.trailing)
                     }
-                }.padding().background(.black.opacity(0.5)).clipShape(.capsule)
-               
+                }.padding().background(.black.opacity(0.5))
+                // i didn´t like it with the clipShape style
+                // .clipShape(.capsule)
+                
                 Spacer()
                 HStack{
                     Spacer()
                     // info Button
                     Button {
                         showExchangeInfo.toggle()
-//                        print("showExchangeInfo value: \(showExchangeInfo)")
+                        //                        print("showExchangeInfo value: \(showExchangeInfo)")
                         
                     } label: {
                         Image(systemName: "info.circle.fill").font(.largeTitle).foregroundStyle(.white)
                     }
-                }.padding(.trailing)
+                }.padding(.trailing).sheet(isPresented: $showExchangeInfo){
+                    ExchangeInfo()
+                }
             }
 //            .border(.blue)
         }
