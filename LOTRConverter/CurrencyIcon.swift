@@ -35,11 +35,11 @@ struct CurrencyIcon: View {
             
             
         }
-        .padding()
+        .padding(3)
         .multilineTextAlignment(.center)
     }
 }
 
-#Preview {
-    CurrencyIcon(currencyImage: .goldpiece, currencyName: "gold piece")
-}
+//#Preview {
+//    CurrencyIcon(currencyImage: .goldpiece, currencyName: "gold piece")
+//}
