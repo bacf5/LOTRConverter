@@ -71,6 +71,11 @@ struct ContentView: View {
                                     rightAmount = leftCurrency
                                         .convert(leftAmount, to: rightCurrency)
                                 }}
+                            .onChange(of: leftCurrency) {
+                                leftAmount = rightCurrency
+                                    .convert(rightAmount, to: leftCurrency)
+
+                            }
                     }
                     // Equal sign
                     Image(systemName: "equal")
@@ -107,6 +112,10 @@ struct ContentView: View {
                                     leftAmount = rightCurrency
                                         .convert(rightAmount, to: leftCurrency)
                                 }}
+                            .onChange(of: rightCurrency) {
+                                rightAmount = leftCurrency
+                                    .convert(leftAmount, to: rightCurrency)
+                            }
                     }
                 }.padding().background(.black.opacity(0.5))
                     
@@ -145,3 +154,4 @@ struct ContentView: View {
 #Preview {
     ContentView()
 }
+
