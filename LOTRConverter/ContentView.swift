@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import TipKit
 
 struct ContentView: View {
     @State var showExchangeInfo = false
@@ -19,6 +20,8 @@ struct ContentView: View {
     
     @State var leftCurrency: Currency = .silverPiece
     @State var rightCurrency: Currency = .goldPiece
+    
+    let currencyTip = CurrencyTip()
     
     var body: some View {
         ZStack {
@@ -60,7 +63,10 @@ struct ContentView: View {
                         .padding(.bottom, -5)
                         .onTapGesture {
                             showSelectCurrency.toggle()
+                            currencyTip.invalidate(reason: .actionPerformed)
                         }
+                        .popoverTip(currencyTip, arrowEdge: .bottom)
+                        
                             
                         // Text field
                         TextField("Amount", text: $leftAmount)
@@ -99,6 +105,7 @@ struct ContentView: View {
                         }.padding(.bottom, -5)
                             .onTapGesture {
                                 showSelectCurrency.toggle()
+                                currencyTip.invalidate(reason: .actionPerformed)
                             }
                         
                         
@@ -118,6 +125,7 @@ struct ContentView: View {
                             }
                     }
                 }.padding().background(.black.opacity(0.5))
+                    .keyboardType(.decimalPad)
                     
                 // i didn´t like it with the clipShape style
                 // .clipShape(.capsule)
@@ -144,7 +152,10 @@ struct ContentView: View {
                         topCurrency: $leftCurrency,
                         bottomCurrency: $rightCurrency
                     )
-                };
+                }
+                .task {
+                    try? Tips.configure()
+                }
             }
             //            .border(.blue)
         }
