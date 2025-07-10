@@ -1,20 +1,20 @@
 <h1 align="center">LOTR Converter 🪙</h1>
 
-![Image 1](appimg/img-1.png)
+![Image1](appimg/img-1.png)
 
 The application is an iOS app written in SwiftUI that features a system of fictional currencies which users can exchange.
 
 ## Some of the currencies are:
 
-![Image 5](appimg/img-5.png)
+<p align="center"><img width="300" alt="image" src="appimg/img-5.png"></p>
 
 ## You can see the exchange rate in this view:
 
-![Image 4](appimg/img-4.png)
+<p align="center"><img width="300" alt="image" src="appimg/img-4.png"></p>
 
 ## You can tap to see the other currencies that the app has:
 
-![Image 3](appimg/img-3.png)
+<p align="center"><img width="300" alt="image" src="appimg/img-3.png"></p>
 
 ## Credits
 
